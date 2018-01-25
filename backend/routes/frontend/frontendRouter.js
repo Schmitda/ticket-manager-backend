@@ -3,7 +3,7 @@ var BackendConfig_1 = require('../../config/BackendConfig');
 var fs = require('fs');
 var frontendRouter = express.Router();
 var config = BackendConfig_1.BackendConfig.getConfiguration();
-frontendRouter.get('*', function (request, response) {
+frontendRouter.get('/', function (request, response) {
     var found = false;
     config.supportedLanguages.forEach(function (lang) {
         if (request.baseUrl.indexOf('/' + lang + '/') > -1) {

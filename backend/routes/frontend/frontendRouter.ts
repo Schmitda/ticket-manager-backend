@@ -6,7 +6,7 @@ let fs = require('fs');
 let frontendRouter = express.Router();
 let config = BackendConfig.getConfiguration();
 
-frontendRouter.get('*', (request: express.Request, response: express.Response) => {
+frontendRouter.get('/', (request: express.Request, response: express.Response) => {
   let found = false;
   config.supportedLanguages.forEach(lang => {
     if (request.baseUrl.indexOf('/' + lang + '/') > -1) {
