@@ -5,12 +5,16 @@ const UserMongooseClass_1 = require("./mongoose-class/UserMongooseClass");
 exports.UserMongoose = UserMongooseClass_1.UserMongoose;
 const UserExtension_1 = require("./schema-extension/UserExtension");
 const userSchema = new mongoose.Schema({
-    Firstname: {
+    firstname: {
         type: String,
         default: null,
     },
-    Lastname: {
+    lastname: {
         type: String,
+        default: null,
+    },
+    age: {
+        type: Number,
         default: null,
     },
     password: {

@@ -15,12 +15,16 @@ import {
   UserDBDInterface
 } from './database-document-interface/UserDBDInterface';
 const userSchema = new mongoose.Schema({
-  Firstname: {
+  firstname: {
     type: String,
     default: null,
   },
-  Lastname: {
+  lastname: {
     type: String,
+    default: null,
+  },
+  age: {
+    type: Number,
     default: null,
   },
   password: {
