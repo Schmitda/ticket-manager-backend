@@ -1,7 +1,7 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-class BackendConfig {
-    static getConfiguration() {
+var BackendConfig = (function () {
+    function BackendConfig() {
+    }
+    BackendConfig.getConfiguration = function () {
         if (process.env.NODE_ENV) {
             process.env.NODE_ENV = process.env.NODE_ENV.trim();
         }
@@ -35,8 +35,9 @@ class BackendConfig {
                     },
                 };
         }
-    }
+    };
     ;
-}
+    return BackendConfig;
+})();
 exports.BackendConfig = BackendConfig;
 //# sourceMappingURL=BackendConfig.js.map

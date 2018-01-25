@@ -29,7 +29,7 @@ export class WebApi {
     }
 
     public myCustomErrorHandler(err: any, req: ExpressRequest, res: express.Response, next: Function) {
-        if (err.type === RequestErrorTypes.UNAUTHORIZED) {
+       /* if (err.type === RequestErrorTypes.UNAUTHORIZED) {
             res.status(400).json({message: 'Unauthorized'});
         } else {
             if (err.code === 11000) {
@@ -37,7 +37,8 @@ export class WebApi {
             } else {
                 res.status(400).json(err);
             }
-        }
+        }*/
+       next(err);
     }
 
     private createProtectedPaths(app: express.Express) {

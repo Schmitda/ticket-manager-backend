@@ -1,17 +1,15 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const express = require("express");
-const Ticket_1 = require("../models/mongoose-class/TicketMongooseClass/Ticket");
-const Ticket_2 = require("../models/TicketMongoose/Ticket");
-const ticketRouter = express.Router();
+var express = require('express');
+var Ticket_1 = require('../models/mongoose-class/TicketMongooseClass/Ticket');
+var Ticket_2 = require('../models/TicketMongoose/Ticket');
+var ticketRouter = express.Router();
 exports.ticketRouter = ticketRouter;
-const ticketRoutesPopulate = [{
+var ticketRoutesPopulate = [{
         path: 'createdBy'
     },];
 exports.ticketRoutesPopulate = ticketRoutesPopulate;
-const ticketMongoose = new Ticket_1.TicketMongoose();
-ticketRouter.post('/nameTaken', (req, res, next) => {
-    const regEx = new RegExp('(^|\s)' + req.body.toCheck + '\\b', 'i');
+var ticketMongoose = new Ticket_1.TicketMongoose();
+ticketRouter.post('/nameTaken', function (req, res, next) {
+    var regEx = new RegExp('(^|\s)' + req.body.toCheck + '\\b', 'i');
     Ticket_2.TicketMongooseModel.findOne({
         ticketname: regEx
     }).exec(function (err, ticket) {
@@ -38,33 +36,33 @@ ticketRouter.post('/nameTaken', (req, res, next) => {
         }
     });
 });
-ticketRouter.get('/', (req, res, next) => {
+ticketRouter.get('/', function (req, res, next) {
     ticketMongoose.model.find().populate(ticketRoutesPopulate).exec()
         .then(function (result) {
         res.json(result);
-    }).catch((err) => {
+    }).catch(function (err) {
         next(err);
     });
 });
-ticketRouter.get('/:id', (req, res, next) => {
+ticketRouter.get('/:id', function (req, res, next) {
     Ticket_2.TicketMongooseModel.findById(req.params.id).populate(ticketRoutesPopulate).exec()
         .then(function (result) {
         res.json(result);
-    }).catch((err) => {
+    }).catch(function (err) {
         next(err);
     });
 });
-ticketRouter.post('/', (req, res, next) => {
-    const ticket = new Ticket_2.TicketMongooseModel(req.body);
+ticketRouter.post('/', function (req, res, next) {
+    var ticket = new Ticket_2.TicketMongooseModel(req.body);
     ticket.createdBy = req.decoded.ticket;
     ticket.save()
-        .then((ticketRes) => {
+        .then(function (ticketRes) {
         res.json(ticketRes);
-    }).catch((err) => {
+    }).catch(function (err) {
         next(err);
     });
 });
-ticketRouter.delete('/:id', (req, res, next) => {
+ticketRouter.delete('/:id', function (req, res, next) {
     Ticket_2.TicketMongooseModel.findByIdAndRemove(req.params.id, function (err, ticket) {
         if (err) {
             next(err);
@@ -74,7 +72,7 @@ ticketRouter.delete('/:id', (req, res, next) => {
         }
     });
 });
-ticketRouter.put('/:id', (req, res, next) => {
+ticketRouter.put('/:id', function (req, res, next) {
     Ticket_2.TicketMongooseModel.findByIdAndUpdate(req.params.id, {
         $set: req.body
     }, {

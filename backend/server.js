@@ -1,12 +1,10 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const WebApi_1 = require("./WebApi");
-const mongoose = require("mongoose");
-const express = require("express");
-const BackendConfig_1 = require("./config/BackendConfig");
-let db = BackendConfig_1.BackendConfig.getConfiguration();
-let securePort;
-let port;
+var WebApi_1 = require('./WebApi');
+var mongoose = require('mongoose');
+var express = require('express');
+var BackendConfig_1 = require('./config/BackendConfig');
+var db = BackendConfig_1.BackendConfig.getConfiguration();
+var securePort;
+var port;
 if (process.env.NODE_ENV === 'production') {
     securePort = 5001;
     port = 5001;
@@ -26,7 +24,7 @@ mongoose.connect(db.url, {
     }
 });
 // TODO FIX add third argument
-let api = new WebApi_1.WebApi(express(), port, securePort);
+var api = new WebApi_1.WebApi(express(), port, securePort);
 api.run();
 console.log('listen on ' + port);
 //# sourceMappingURL=server.js.map

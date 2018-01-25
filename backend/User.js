@@ -1,17 +1,15 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const express = require("express");
-const User_1 = require("../models/mongoose-class/UserMongooseClass/User");
-const User_2 = require("../models/UserMongoose/User");
-const userRouter = express.Router();
+var express = require('express');
+var User_1 = require('../models/mongoose-class/UserMongooseClass/User');
+var User_2 = require('../models/UserMongoose/User');
+var userRouter = express.Router();
 exports.userRouter = userRouter;
-const userRoutesPopulate = [{
+var userRoutesPopulate = [{
         path: 'createdBy'
     },];
 exports.userRoutesPopulate = userRoutesPopulate;
-const userMongoose = new User_1.UserMongoose();
-userRouter.post('/nameTaken', (req, res, next) => {
-    const regEx = new RegExp('(^|\s)' + req.body.toCheck + '\\b', 'i');
+var userMongoose = new User_1.UserMongoose();
+userRouter.post('/nameTaken', function (req, res, next) {
+    var regEx = new RegExp('(^|\s)' + req.body.toCheck + '\\b', 'i');
     User_2.UserMongooseModel.findOne({
         username: regEx
     }).exec(function (err, user) {
@@ -38,33 +36,33 @@ userRouter.post('/nameTaken', (req, res, next) => {
         }
     });
 });
-userRouter.get('/', (req, res, next) => {
+userRouter.get('/', function (req, res, next) {
     userMongoose.model.find().populate(userRoutesPopulate).exec()
         .then(function (result) {
         res.json(result);
-    }).catch((err) => {
+    }).catch(function (err) {
         next(err);
     });
 });
-userRouter.get('/:id', (req, res, next) => {
+userRouter.get('/:id', function (req, res, next) {
     User_2.UserMongooseModel.findById(req.params.id).populate(userRoutesPopulate).exec()
         .then(function (result) {
         res.json(result);
-    }).catch((err) => {
+    }).catch(function (err) {
         next(err);
     });
 });
-userRouter.post('/', (req, res, next) => {
-    const user = new User_2.UserMongooseModel(req.body);
+userRouter.post('/', function (req, res, next) {
+    var user = new User_2.UserMongooseModel(req.body);
     user.createdBy = req.decoded.user;
     user.save()
-        .then((userRes) => {
+        .then(function (userRes) {
         res.json(userRes);
-    }).catch((err) => {
+    }).catch(function (err) {
         next(err);
     });
 });
-userRouter.delete('/:id', (req, res, next) => {
+userRouter.delete('/:id', function (req, res, next) {
     User_2.UserMongooseModel.findByIdAndRemove(req.params.id, function (err, user) {
         if (err) {
             next(err);
@@ -74,7 +72,7 @@ userRouter.delete('/:id', (req, res, next) => {
         }
     });
 });
-userRouter.put('/:id', (req, res, next) => {
+userRouter.put('/:id', function (req, res, next) {
     User_2.UserMongooseModel.findByIdAndUpdate(req.params.id, {
         $set: req.body
     }, {

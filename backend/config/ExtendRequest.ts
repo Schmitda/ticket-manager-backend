@@ -1,6 +1,7 @@
 import {ExpressResponse} from '../shared/types/ExpressResponse';
 import {ExpressRequest} from '../shared/types/ExpressRequest';
 import {UserMongoose, UserMongooseModel} from '../models/UserMongoose';
+import {UserInterface} from "../models/interface/user/user.interface";
 
 let extendRequest = function extendRequest(req: ExpressRequest, res: ExpressResponse, next: Function) {
   req.getUser = (): Promise<UserInterface> => {

@@ -1,7 +1,7 @@
 import * as mongoose from 'mongoose';
 import {DocumentQuery, ModelPopulateOptions} from 'mongoose';
 
-export abstract class MongooseBase<T extends mongoose.Document> {
+export class MongooseBase<T extends mongoose.Document> {
   public static mongooseSchema: mongoose.Schema;
   public static staticModel: mongoose.Model<any>;
   public static defaultPopulate: ModelPopulateOptions[] = [{path: 'createdBy'}];
@@ -34,9 +34,7 @@ export abstract class MongooseBase<T extends mongoose.Document> {
     return this._model.find(obj).populate(MongooseBase.defaultPopulate);
   }
 
-  protected findById(id: Object | string | number, callback?: (err: any, res: T | null) => void): DocumentQuery<T | null, T> {
-    return this._model.findById(id).populate(MongooseBase.defaultPopulate);
-  }
+
 
   private clearPopulate() {
     this._population = [];

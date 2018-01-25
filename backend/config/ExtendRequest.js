@@ -1,11 +1,9 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const UserMongoose_1 = require("../models/UserMongoose");
-let extendRequest = function extendRequest(req, res, next) {
-    req.getUser = () => {
-        return new Promise((resolve, reject) => {
+var UserMongoose_1 = require('../models/UserMongoose');
+var extendRequest = function extendRequest(req, res, next) {
+    req.getUser = function () {
+        return new Promise(function (resolve, reject) {
             if (req.decoded) {
-                UserMongoose_1.UserMongooseModel.findById(req.decoded.user._id).populate(UserMongoose_1.UserMongoose.defaultPopulate).exec((err, user) => {
+                UserMongoose_1.UserMongooseModel.findById(req.decoded.user._id).populate(UserMongoose_1.UserMongoose.defaultPopulate).exec(function (err, user) {
                     if (err) {
                         reject(err);
                     }

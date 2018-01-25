@@ -1,20 +1,18 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const express = require("express");
-const Groups_1 = require("../../src/app/shared/types/Groups");
-class Authentication {
-    constructor() {
+var express = require('express');
+var Groups_1 = require("../../src/app/shared/types/Groups");
+var Authentication = (function () {
+    function Authentication() {
     }
-    static getInstance() {
+    Authentication.getInstance = function () {
         if (Authentication.authentication === undefined) {
             Authentication.authentication = new Authentication();
         }
         return Authentication.authentication;
-    }
-    static routeIdOrAdmin() {
+    };
+    Authentication.routeIdOrAdmin = function () {
         return Authentication.hasIdOrAdmin();
-    }
-    static routeIdOrGroup(groups) {
+    };
+    Authentication.routeIdOrGroup = function (groups) {
         return function (req, res, next) {
             if (req.decoded.user._id === req.params.id) {
                 next();
@@ -23,8 +21,8 @@ class Authentication {
                 Authentication.hasGroup(groups)(req, res, next);
             }
         };
-    }
-    static hasIdOrAdmin() {
+    };
+    Authentication.hasIdOrAdmin = function () {
         return function (req, res, next) {
             if (req.decoded && req.decoded.user && req.decoded.user._id === req.params.id) {
                 next();
@@ -33,15 +31,15 @@ class Authentication {
                 Authentication.hasGroup(Groups_1.Groups.ADMIN)(req, res, next);
             }
         };
-    }
-    static checkIsAdmin(req) {
-        let groupNames = req.decoded.user.groups((group) => group.name);
+    };
+    Authentication.checkIsAdmin = function (req) {
+        var groupNames = req.decoded.user.groups(function (group) { return group.name; });
         return (groupNames.indexOf(Groups_1.Groups.ADMIN) > -1);
-    }
-    static hasRights(hasRight) {
+    };
+    Authentication.hasRights = function (hasRight) {
         return (function (req, res, next) {
             if (req.decoded && req.decoded.user) {
-                let permissions = [].concat.apply([], req.decoded.user.groups.map((group) => group.permissions.map(permission => permission.shortName)));
+                var permissions = [].concat.apply([], req.decoded.user.groups.map(function (group) { return group.permissions.map(function (permission) { return permission.shortName; }); }));
                 if (typeof hasRight === 'string') {
                     if (permissions.indexOf(hasRight) > -1) {
                         next();
@@ -51,9 +49,9 @@ class Authentication {
                     }
                 }
                 else {
-                    let rightsToPass = hasRight.length;
-                    let passedRights = 0;
-                    for (let i = 0; i < hasRight.length; i++) {
+                    var rightsToPass = hasRight.length;
+                    var passedRights = 0;
+                    for (var i = 0; i < hasRight.length; i++) {
                         if (permissions.indexOf(hasRight[i]) > -1) {
                             passedRights++;
                         }
@@ -75,13 +73,13 @@ class Authentication {
                 }
             }
         });
-    }
-    static hasOneOfTheGroups(groups) {
+    };
+    Authentication.hasOneOfTheGroups = function (groups) {
         return function (req, res, next) {
             if (req.decoded.user) {
-                let groupNames = req.decoded.user.groups.map((group) => group.name);
-                let passedRights = 0;
-                for (let i = 0; i < groups.length; i++) {
+                var groupNames = req.decoded.user.groups.map(function (group) { return group.name; });
+                var passedRights = 0;
+                for (var i = 0; i < groups.length; i++) {
                     if (groupNames.indexOf(groups[i]) > -1) {
                         passedRights++;
                     }
@@ -102,11 +100,11 @@ class Authentication {
                 }
             }
         };
-    }
-    static hasGroup(hasGroup) {
+    };
+    Authentication.hasGroup = function (hasGroup) {
         return function (req, res, next) {
             if (req.decoded && req.decoded.user) {
-                let groups = req.decoded.user.groups.map((group) => group.name);
+                var groups = req.decoded.user.groups.map(function (group) { return group.name; });
                 if (typeof hasGroup === 'string') {
                     if (groups.indexOf(hasGroup) > -1) {
                         next();
@@ -116,9 +114,9 @@ class Authentication {
                     }
                 }
                 else {
-                    let rightsToPass = hasGroup.length;
-                    let passedRights = 0;
-                    for (let i = 0; i < hasGroup.length; i++) {
+                    var rightsToPass = hasGroup.length;
+                    var passedRights = 0;
+                    for (var i = 0; i < hasGroup.length; i++) {
                         if (hasGroup.indexOf(hasGroup[i]) > -1) {
                             passedRights++;
                         }
@@ -140,11 +138,11 @@ class Authentication {
                 }
             }
         };
-    }
-    static routeIsAdmin() {
+    };
+    Authentication.routeIsAdmin = function () {
         return Authentication.hasGroup(Groups_1.Groups.ADMIN);
-    }
-    static routeIsAuthenticated() {
+    };
+    Authentication.routeIsAuthenticated = function () {
         return function (req, res, next) {
             if (req.decoded && req.decoded.user) {
                 next();
@@ -153,8 +151,9 @@ class Authentication {
                 res.sendNeedAuthentication();
             }
         };
-    }
-}
-Authentication.apiRoutes = express.Router();
+    };
+    Authentication.apiRoutes = express.Router();
+    return Authentication;
+})();
 exports.Authentication = Authentication;
 //# sourceMappingURL=Authentication.js.map

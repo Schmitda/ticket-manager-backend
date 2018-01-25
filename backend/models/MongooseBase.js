@@ -1,31 +1,35 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-class MongooseBase {
-    constructor() {
+var MongooseBase = (function () {
+    function MongooseBase() {
         this._population = [];
     }
-    get model() {
-        return this._model;
-    }
-    get population() {
-        return this._population;
-    }
-    static addToDefaultPopulate(param) {
+    Object.defineProperty(MongooseBase.prototype, "model", {
+        get: function () {
+            return this._model;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(MongooseBase.prototype, "population", {
+        get: function () {
+            return this._population;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    MongooseBase.addToDefaultPopulate = function (param) {
         MongooseBase.defaultPopulate.push(param);
-    }
-    addToPopulate(param) {
+    };
+    MongooseBase.prototype.addToPopulate = function (param) {
         this._population.push(param);
-    }
-    find(obj, callback) {
+    };
+    MongooseBase.prototype.find = function (obj, callback) {
         return this._model.find(obj).populate(MongooseBase.defaultPopulate);
-    }
-    findById(id, callback) {
-        return this._model.findById(id).populate(MongooseBase.defaultPopulate);
-    }
-    clearPopulate() {
+    };
+    MongooseBase.prototype.clearPopulate = function () {
         this._population = [];
-    }
-}
-MongooseBase.defaultPopulate = [{ path: 'createdBy' }];
+    };
+    MongooseBase.defaultPopulate = [{ path: 'createdBy' }];
+    return MongooseBase;
+})();
 exports.MongooseBase = MongooseBase;
 //# sourceMappingURL=MongooseBase.js.map

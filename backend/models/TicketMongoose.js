@@ -1,10 +1,8 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const mongoose = require("mongoose");
-const TicketMongooseClass_1 = require("./mongoose-class/TicketMongooseClass");
+var mongoose = require('mongoose');
+var TicketMongooseClass_1 = require("./mongoose-class/TicketMongooseClass");
 exports.TicketMongoose = TicketMongooseClass_1.TicketMongoose;
-const TicketExtension_1 = require("./schema-extension/TicketExtension");
-const ticketSchema = new mongoose.Schema({
+var TicketExtension_1 = require('./schema-extension/TicketExtension');
+var ticketSchema = new mongoose.Schema({
     subject: {
         type: String,
         default: null,
@@ -35,12 +33,12 @@ const ticketSchema = new mongoose.Schema({
 exports.ticketSchema = ticketSchema;
 TicketExtension_1.ExtendTicketSchema.ticketSchema = ticketSchema;
 mongoose.model('Ticket', ticketSchema);
-let TicketMongooseModel = mongoose.model('Ticket', ticketSchema);
+var TicketMongooseModel = mongoose.model('Ticket', ticketSchema);
 exports.TicketMongooseModel = TicketMongooseModel;
-let TicketMongooseInstance;
+var TicketMongooseInstance;
 exports.TicketMongooseInstance = TicketMongooseInstance;
-setImmediate(() => {
-    exports.TicketMongooseInstance = TicketMongooseInstance = new TicketMongooseClass_1.TicketMongoose();
+setImmediate(function () {
+    TicketMongooseInstance = new TicketMongooseClass_1.TicketMongoose();
     TicketMongooseClass_1.TicketMongoose.staticModel = TicketMongooseModel;
 });
 //# sourceMappingURL=TicketMongoose.js.map
