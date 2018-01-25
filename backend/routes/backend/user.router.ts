@@ -65,8 +65,7 @@ userRouter.get('/:id', (req: ExpressRequest, res: ExpressResponse, next: Functio
     })
 });
 userRouter.post('/', (req: ExpressRequest, res: ExpressResponse, next: Function) => {
-  const user = new UserMongooseModel(req.body);
-  user.createdBy = req.decoded.user;
+  let user = new UserMongooseModel(req.body);
   user.save()
     .then((userRes: UserDBDInterface) => {
       res.json(userRes);

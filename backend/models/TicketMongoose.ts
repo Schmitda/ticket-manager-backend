@@ -1,59 +1,60 @@
 import * as mongoose from 'mongoose';
 import {
-  Observable
+    Observable
 } from 'rxjs/Observable';
 import {
-  TicketMongoose
+    TicketMongoose
 } from "./mongoose-class/TicketMongooseClass";
 import {
-  TicketDBInterface
+    TicketDBInterface
 } from "./database-interface/TicketDBInterface";
 import {
-  ExtendTicketSchema
+    ExtendTicketSchema
 } from './schema-extension/TicketExtension';
 import {
-  TicketDBDInterface
+    TicketDBDInterface
 } from './database-document-interface/TicketDBDInterface';
+
 const ticketSchema = new mongoose.Schema({
-  subject: {
-    type: String,
-    default: null,
-  },
-  body: {
-    type: String,
-    default: null,
-  },
-  created: {
-    type: Date,
-    default: null,
-  },
-  urgent: {
-    type: Boolean,
-    default: null,
-  },
-  type: {
-    type: String,
-    default: null,
-  },
-  owner: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
-  },
+    subject: {
+        type: String,
+        default: null,
+    },
+    body: {
+        type: String,
+        default: null,
+    },
+    created: {
+        type: Date,
+        default: null,
+    },
+    urgent: {
+        type: Boolean,
+        default: null,
+    },
+    type: {
+        type: String,
+        default: null,
+    },
+    owner: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+    },
 }, {
-  usePushEach: true
+    usePushEach: true
 });
 ExtendTicketSchema.ticketSchema = ticketSchema;
-mongoose.model < TicketDBInterface > ('Ticket', ticketSchema);
-let TicketMongooseModel = mongoose.model < TicketDBDInterface,
-  TicketDBInterface > ('Ticket', ticketSchema);
+mongoose.model <TicketDBInterface>('Ticket', ticketSchema);
+let TicketMongooseModel = mongoose.model <TicketDBDInterface,
+    TicketDBInterface>('Ticket', ticketSchema);
 let TicketMongooseInstance: TicketMongoose;
 setImmediate(() => {
-  TicketMongooseInstance = new TicketMongoose();
-  TicketMongoose.staticModel = TicketMongooseModel;
+    TicketMongooseInstance = new TicketMongoose();
+    TicketMongoose.staticModel = TicketMongooseModel;
 });
 export {
-  TicketMongoose,
-  ticketSchema,
-  TicketMongooseInstance,
-  TicketMongooseModel
+    TicketMongoose,
+    ticketSchema,
+    TicketMongooseInstance,
+    TicketMongooseModel
 }

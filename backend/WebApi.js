@@ -6,6 +6,7 @@ var BackendConfig_1 = require('./config/BackendConfig');
 var ExtendResponse_1 = require('./config/ExtendResponse');
 var ExtendRequest_1 = require('./config/ExtendRequest');
 var user_router_1 = require("./routes/backend/user.router");
+var ticket_router_1 = require("./routes/backend/ticket.router");
 var WebApi = (function () {
     function WebApi(app, port, securePort) {
         this.app = app;
@@ -65,6 +66,7 @@ var WebApi = (function () {
     };
     WebApi.prototype.configureRoutes = function (app) {
         app.use('/api/user', user_router_1.userRouter);
+        app.use('/api/ticket', ticket_router_1.ticketRouter);
         app.use('/', frontendRouter);
         app.use(this.myCustomErrorHandler);
     };

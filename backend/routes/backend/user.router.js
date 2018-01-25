@@ -54,7 +54,6 @@ userRouter.get('/:id', function (req, res, next) {
 });
 userRouter.post('/', function (req, res, next) {
     var user = new UserMongoose_1.UserMongooseModel(req.body);
-    user.createdBy = req.decoded.user;
     user.save()
         .then(function (userRes) {
         res.json(userRes);

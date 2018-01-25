@@ -10,6 +10,7 @@ import {extendedResponse} from './config/ExtendResponse';
 import {extendRequest} from './config/ExtendRequest';
 import {FrontAndBackendUtility} from './helper/FrontAndBackendUtility';
 import {userRouter} from "./routes/backend/user.router";
+import {ticketRouter} from "./routes/backend/ticket.router";
 
 
 export class WebApi {
@@ -79,6 +80,7 @@ export class WebApi {
     private configureRoutes(app: express.Express) {
 
         app.use('/api/user', userRouter);
+        app.use('/api/ticket', ticketRouter);
         app.use('/', frontendRouter);
         app.use(this.myCustomErrorHandler);
 

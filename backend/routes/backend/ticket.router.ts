@@ -65,8 +65,7 @@ ticketRouter.get('/:id', (req: ExpressRequest, res: ExpressResponse, next: Funct
     })
 });
 ticketRouter.post('/', (req: ExpressRequest, res: ExpressResponse, next: Function) => {
-  const ticket = new TicketMongooseModel(req.body);
-  ticket.createdBy = req.decoded.ticket;
+  let ticket = new TicketMongooseModel(req.body);
   ticket.save()
     .then((ticketRes: TicketDBDInterface) => {
       res.json(ticketRes);
