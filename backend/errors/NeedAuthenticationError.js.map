@@ -1,0 +1,1 @@
+{"version":3,"file":"NeedAuthenticationError.js","sourceRoot":"","sources":["NeedAuthenticationError.ts"],"names":[],"mappings":";;AAAA,6DAAwD;AAExD,mBAA2B,SAAQ,uCAAkB;IAEnD,YAAY,UAAkB,8CAA8C,EAAE,OAAe,oBAAoB;QAC/G,KAAK,CAAC,OAAO,EAAE,IAAI,EAAE,GAAG,CAAC,CAAC;IAC5B,CAAC;CACF;AALD,sCAKC"}

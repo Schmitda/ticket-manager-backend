@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2016",
+    "sourceMap": true
+  },
+  "include": [
+    "../backend/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

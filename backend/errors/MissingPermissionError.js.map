@@ -1,0 +1,1 @@
+{"version":3,"file":"MissingPermissionError.js","sourceRoot":"","sources":["MissingPermissionError.ts"],"names":[],"mappings":";;AAAA,6DAAwD;AAExD,mBAA2B,SAAQ,uCAAkB;IAEnD,YAAY,UAAkB,sEAAsE,EAAE,OAAe,wBAAwB;QAC3I,KAAK,CAAC,OAAO,EAAE,IAAI,EAAE,GAAG,CAAC,CAAC;IAC5B,CAAC;CACF;AALD,sCAKC"}
