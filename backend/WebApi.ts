@@ -72,6 +72,7 @@ export class WebApi {
     }
 
     private verifyToken(req, res, next) {
+        next();
     }
 
     private configureRoutes(app: express.Express) {

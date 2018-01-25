@@ -64,6 +64,7 @@ class WebApi {
         app.set('secret', db.secret);
     }
     verifyToken(req, res, next) {
+        next();
     }
     configureRoutes(app) {
         app.use('/api/user', user_router_1.userRouter);
