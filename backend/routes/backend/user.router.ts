@@ -74,22 +74,21 @@ userRouter.get('/:id', (req: ExpressRequest, res: ExpressResponse, next: Functio
     })
 });
 userRouter.post('/', (req: ExpressRequest, res: ExpressResponse, next: Function) => {
-<<<<<<< HEAD
+
     const user = new UserMongooseModel(req.body);
-    user.createdBy = req.decoded.user;
     user.save()
         .then((userRes: UserDBDInterface) => {
             res.json(userRes);
         }).catch((err: any) => {
         next(err);
-=======
+
   let user = new UserMongooseModel(req.body);
   user.save()
     .then((userRes: UserDBDInterface) => {
       res.json(userRes);
     }).catch((err: any) => {
       next(err);
->>>>>>> 0549fc091259e5cd6a499dd7ddd584fdaafd193a
+
     });
 });
 userRouter.delete('/:id', (req: ExpressRequest, res: ExpressResponse, next: Function) => {
