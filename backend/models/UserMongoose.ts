@@ -1,55 +1,60 @@
 import * as mongoose from 'mongoose';
 import {
-  Observable
+    Observable
 } from 'rxjs/Observable';
 import {
-  UserMongoose
+    UserMongoose
 } from "./mongoose-class/UserMongooseClass";
 import {
-  UserDBInterface
+    UserDBInterface
 } from "./database-interface/UserDBInterface";
 import {
-  ExtendUserSchema
+    ExtendUserSchema
 } from './schema-extension/UserExtension';
 import {
-  UserDBDInterface
+    UserDBDInterface
 } from './database-document-interface/UserDBDInterface';
+
 const userSchema = new mongoose.Schema({
-  firstname: {
-    type: String,
-    default: null,
-  },
-  lastname: {
-    type: String,
-    default: null,
-  },
-  age: {
-    type: Number,
-    default: null,
-  },
-  password: {
-    type: String,
-    default: null,
-  },
-  email: {
-    type: String,
-    default: null,
-  },
+    firstname: {
+        type: String,
+        default: null,
+    },
+    lastname: {
+        type: String,
+        default: null,
+    },
+    age: {
+        type: Number,
+        default: null,
+    },
+    password: {
+        type: String,
+        default: null,
+    },
+    phone: {
+        type: String,
+        default: null,
+    },
+    email: {
+        type: String,
+        default: null,
+    },
 }, {
-  usePushEach: true
+    usePushEach: true
 });
 ExtendUserSchema.userSchema = userSchema;
-mongoose.model < UserDBInterface > ('User', userSchema);
-let UserMongooseModel = mongoose.model < UserDBDInterface,
-  UserDBInterface > ('User', userSchema);
+mongoose.model <UserDBInterface>('User', userSchema);
+let UserMongooseModel = mongoose.model <UserDBDInterface,
+    UserDBInterface>('User', userSchema);
 let UserMongooseInstance: UserMongoose;
 setImmediate(() => {
-  UserMongooseInstance = new UserMongoose();
-  UserMongoose.staticModel = UserMongooseModel;
+    UserMongooseInstance = new UserMongoose();
+    UserMongoose.staticModel = UserMongooseModel;
 });
 export {
-  UserMongoose,
-  userSchema,
-  UserMongooseInstance,
-  UserMongooseModel
+    UserMongoose,
+    userSchema,
+    UserMongooseInstance,
+    UserMongooseModel
 }

@@ -19,6 +19,10 @@ var userSchema = new mongoose.Schema({
         type: String,
         default: null,
     },
+    phone: {
+        type: String,
+        default: null,
+    },
     email: {
         type: String,
         default: null,
