@@ -3,6 +3,9 @@ import {
   Observable
 } from 'rxjs/Observable';
 import {
+  UserMongoose
+} from "./mongoose-class/UserMongooseClass";
+import {
   UserDBInterface
 } from "./database-interface/UserDBInterface";
 import {
@@ -39,10 +42,13 @@ ExtendUserSchema.userSchema = userSchema;
 mongoose.model < UserDBInterface > ('User', userSchema);
 let UserMongooseModel = mongoose.model < UserDBDInterface,
   UserDBInterface > ('User', userSchema);
+let UserMongooseInstance: UserMongoose;
 setImmediate(() => {
-
+  UserMongooseInstance = new UserMongoose();
+  UserMongoose.staticModel = UserMongooseModel;
 });
 export {
+  UserMongoose,
   userSchema,
   UserMongooseInstance,
   UserMongooseModel

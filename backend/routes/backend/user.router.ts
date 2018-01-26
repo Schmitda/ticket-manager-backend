@@ -3,6 +3,7 @@ import {UserMongooseModel} from '../../models/UserMongoose';
 import {UserDBDInterface} from '../../models/database-document-interface/UserDBDInterface';
 import {ExpressRequest} from '../../shared/types/ExpressRequest';
 import {ExpressResponse} from '../../shared/types/ExpressResponse';
+import {UserMongoose} from "../../models/mongoose-class/UserMongooseClass";
 
 const userRouter = express.Router();
 const userRoutesPopulate = [{
