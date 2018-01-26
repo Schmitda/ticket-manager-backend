@@ -1,1 +1,0 @@
-{"version":3,"file":"TicketMongooseClass.js","sourceRoot":"","sources":["TicketMongooseClass.ts"],"names":[],"mappings":";;AAAA,qCAAqC;AACrC,kDAEyB;AAUzB,sDAE2B;AAC3B,oBAA4B,SAAQ,2BAAmC;IACrE;QACE,KAAK,EAAE,CAAC;QACR,IAAI,CAAC,MAAM,GAAG,QAAQ,CAAC,KAAK,CAAwB,QAAQ,EAAE,6BAAY,CAAC,CAAC;IAC9E,CAAC;CACF;AALD,wCAKC"}

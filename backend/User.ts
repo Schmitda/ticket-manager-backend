@@ -3,9 +3,6 @@ import {
   UserInterface
 } from '../models/interface/user/user.interface/User';
 import {
-  UserMongoose
-} from '../models/mongoose-class/UserMongooseClass/User';
-import {
   UserMongooseModel
 } from '../models/UserMongoose/User';
 import {

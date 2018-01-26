@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
-const UserMongooseClass_1 = require("../../models/mongoose-class/UserMongooseClass");
 const UserMongoose_1 = require("../../models/UserMongoose");
 const userRouter = express.Router();
 exports.userRouter = userRouter;
@@ -9,7 +8,7 @@ const userRoutesPopulate = [{
         path: 'createdBy'
     },];
 exports.userRoutesPopulate = userRoutesPopulate;
-const userMongoose = new UserMongooseClass_1.UserMongoose();
+const userMongoose = new UserMongoose();
 userRouter.post('/nameTaken', (req, res, next) => {
     const regEx = new RegExp('(^|\s)' + req.body.toCheck + '\\b', 'i');
     UserMongoose_1.UserMongooseModel.findOne({

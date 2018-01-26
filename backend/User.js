@@ -1,18 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
-const User_1 = require("../models/mongoose-class/UserMongooseClass/User");
-const User_2 = require("../models/UserMongoose/User");
+const User_1 = require("../models/UserMongoose/User");
 const userRouter = express.Router();
 exports.userRouter = userRouter;
 const userRoutesPopulate = [{
         path: 'createdBy'
     },];
 exports.userRoutesPopulate = userRoutesPopulate;
-const userMongoose = new User_1.UserMongoose();
+const userMongoose = new UserMongoose();
 userRouter.post('/nameTaken', (req, res, next) => {
     const regEx = new RegExp('(^|\s)' + req.body.toCheck + '\\b', 'i');
-    User_2.UserMongooseModel.findOne({
+    User_1.UserMongooseModel.findOne({
         username: regEx
     }).exec(function (err, user) {
         if (err) {
@@ -47,7 +46,7 @@ userRouter.get('/', (req, res, next) => {
     });
 });
 userRouter.get('/:id', (req, res, next) => {
-    User_2.UserMongooseModel.findById(req.params.id).populate(userRoutesPopulate).exec()
+    User_1.UserMongooseModel.findById(req.params.id).populate(userRoutesPopulate).exec()
         .then(function (result) {
         res.json(result);
     }).catch((err) => {
@@ -55,7 +54,7 @@ userRouter.get('/:id', (req, res, next) => {
     });
 });
 userRouter.post('/', (req, res, next) => {
-    const user = new User_2.UserMongooseModel(req.body);
+    const user = new User_1.UserMongooseModel(req.body);
     user.createdBy = req.decoded.user;
     user.save()
         .then((userRes) => {
@@ -65,7 +64,7 @@ userRouter.post('/', (req, res, next) => {
     });
 });
 userRouter.delete('/:id', (req, res, next) => {
-    User_2.UserMongooseModel.findByIdAndRemove(req.params.id, function (err, user) {
+    User_1.UserMongooseModel.findByIdAndRemove(req.params.id, function (err, user) {
         if (err) {
             next(err);
         }
@@ -75,7 +74,7 @@ userRouter.delete('/:id', (req, res, next) => {
     });
 });
 userRouter.put('/:id', (req, res, next) => {
-    User_2.UserMongooseModel.findByIdAndUpdate(req.params.id, {
+    User_1.UserMongooseModel.findByIdAndUpdate(req.params.id, {
         $set: req.body
     }, {
         new: true
