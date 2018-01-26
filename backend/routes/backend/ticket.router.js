@@ -36,7 +36,7 @@ ticketRouter.post('/nameTaken', function (req, res, next) {
         }
     });
 });
-ticketRouter.get('/:searchTerm', function (req, res, next) {
+ticketRouter.get('/search/:searchTerm', function (req, res, next) {
     ticketMongoose.model.find({ subject: new RegExp('^' + req.params.searchTerm + '.*', "i") }).exec(function (err, tickets) {
         if (tickets) {
             res.json(tickets);

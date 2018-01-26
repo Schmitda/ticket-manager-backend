@@ -50,7 +50,7 @@ ticketRouter.post('/nameTaken', (req: ExpressRequest, res: ExpressResponse, next
     })
 });
 
-ticketRouter.get('/:searchTerm', (req: ExpressRequest, res: ExpressResponse, next: Function) => {
+ticketRouter.get('/search/:searchTerm', (req: ExpressRequest, res: ExpressResponse, next: Function) => {
     ticketMongoose.model.find({subject: new RegExp('^' + req.params.searchTerm + '.*', "i")}).exec((err, tickets) => {
         if (tickets) {
             res.json(tickets);
