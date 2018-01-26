@@ -47,9 +47,9 @@ userRouter.get('/', (req: ExpressRequest, res: ExpressResponse, next: Function) 
 
 userRouter.post('/checkToken', (req: ExpressRequest, res: ExpressResponse, next: Function) => {
     UserMongooseModel.findOne({_id: req.body.token.replace("TOKEN:", "")}).exec((err, user) => {
-        if(err){
+        if (err) {
             res.json({valid: false});
-        }else{
+        } else {
             res.json({user: user, token: "TOKEN:" + user._id});
         }
     })
@@ -74,21 +74,20 @@ userRouter.get('/:id', (req: ExpressRequest, res: ExpressResponse, next: Functio
     })
 });
 userRouter.post('/', (req: ExpressRequest, res: ExpressResponse, next: Function) => {
-
     const user = new UserMongooseModel(req.body);
     user.save()
         .then((userRes: UserDBDInterface) => {
             res.json(userRes);
         }).catch((err: any) => {
         next(err);
+        let user = new UserMongooseModel(req.body);
+        user.save()
+            .then((userRes: UserDBDInterface) => {
+                res.json(userRes);
+            }).catch((err: any) => {
+            next(err);
 
-  let user = new UserMongooseModel(req.body);
-  user.save()
-    .then((userRes: UserDBDInterface) => {
-      res.json(userRes);
-    }).catch((err: any) => {
-      next(err);
-
+        });
     });
 });
 userRouter.delete('/:id', (req: ExpressRequest, res: ExpressResponse, next: Function) => {
@@ -115,6 +114,6 @@ userRouter.put('/:id', (req: ExpressRequest, res: ExpressResponse, next: Functio
         });
 });
 export {
-    userRouter,
-    userRoutesPopulate
+    userRoutesPopulate,
+    userRouter
 };
