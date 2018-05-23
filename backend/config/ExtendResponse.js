@@ -1,3 +1,5 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var extendedResponse = function extendResponse(req, res, next) {
     res.sendMessage = function (title, message, duration, status, type) {
         if (duration === void 0) { duration = 2000; }

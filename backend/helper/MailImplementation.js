@@ -1,6 +1,8 @@
-var Mailer_1 = require('./Mailer');
-var MailAddresses_1 = require('../shared/types/MailAddresses');
-var MailImplementation = (function () {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var Mailer_1 = require("./Mailer");
+var MailAddresses_1 = require("../shared/types/MailAddresses");
+var MailImplementation = /** @class */ (function () {
     function MailImplementation() {
     }
     MailImplementation.sendNewRegistered = function (user) {
@@ -69,6 +71,6 @@ var MailImplementation = (function () {
         }
     };
     return MailImplementation;
-})();
+}());
 exports.MailImplementation = MailImplementation;
 //# sourceMappingURL=MailImplementation.js.map

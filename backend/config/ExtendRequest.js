@@ -1,4 +1,6 @@
-var UserMongoose_1 = require('../models/UserMongoose');
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var UserMongoose_1 = require("../models/UserMongoose");
 var extendRequest = function extendRequest(req, res, next) {
     req.getUser = function () {
         return new Promise(function (resolve, reject) {

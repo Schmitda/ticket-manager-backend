@@ -1,7 +1,9 @@
-var WebApi_1 = require('./WebApi');
-var mongoose = require('mongoose');
-var express = require('express');
-var BackendConfig_1 = require('./config/BackendConfig');
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var WebApi_1 = require("./WebApi");
+var mongoose = require("mongoose");
+var express = require("express");
+var BackendConfig_1 = require("./config/BackendConfig");
 var db = BackendConfig_1.BackendConfig.getConfiguration();
 var securePort;
 var port;

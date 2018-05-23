@@ -1,7 +1,9 @@
-var mongoose = require('mongoose');
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var mongoose = require("mongoose");
 var UserMongooseClass_1 = require("./mongoose-class/UserMongooseClass");
 exports.UserMongoose = UserMongooseClass_1.UserMongoose;
-var UserExtension_1 = require('./schema-extension/UserExtension');
+var UserExtension_1 = require("./schema-extension/UserExtension");
 var userSchema = new mongoose.Schema({
     firstname: {
         type: String,
@@ -38,7 +40,7 @@ exports.UserMongooseModel = UserMongooseModel;
 var UserMongooseInstance;
 exports.UserMongooseInstance = UserMongooseInstance;
 setImmediate(function () {
-    UserMongooseInstance = new UserMongooseClass_1.UserMongoose();
+    exports.UserMongooseInstance = UserMongooseInstance = new UserMongooseClass_1.UserMongoose();
     UserMongooseClass_1.UserMongoose.staticModel = UserMongooseModel;
 });
 //# sourceMappingURL=UserMongoose.js.map

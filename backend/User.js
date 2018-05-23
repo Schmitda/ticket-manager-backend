@@ -1,15 +1,18 @@
-var express = require('express');
-var User_1 = require('../models/UserMongoose/User');
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var express = require("express");
+var User_1 = require("../models/mongoose-class/UserMongooseClass/User");
+var User_2 = require("../models/UserMongoose/User");
 var userRouter = express.Router();
 exports.userRouter = userRouter;
 var userRoutesPopulate = [{
         path: 'createdBy'
     },];
 exports.userRoutesPopulate = userRoutesPopulate;
-var userMongoose = new UserMongoose();
+var userMongoose = new User_1.UserMongoose();
 userRouter.post('/nameTaken', function (req, res, next) {
     var regEx = new RegExp('(^|\s)' + req.body.toCheck + '\\b', 'i');
-    User_1.UserMongooseModel.findOne({
+    User_2.UserMongooseModel.findOne({
         username: regEx
     }).exec(function (err, user) {
         if (err) {
@@ -44,7 +47,7 @@ userRouter.get('/', function (req, res, next) {
     });
 });
 userRouter.get('/:id', function (req, res, next) {
-    User_1.UserMongooseModel.findById(req.params.id).populate(userRoutesPopulate).exec()
+    User_2.UserMongooseModel.findById(req.params.id).populate(userRoutesPopulate).exec()
         .then(function (result) {
         res.json(result);
     }).catch(function (err) {
@@ -52,7 +55,7 @@ userRouter.get('/:id', function (req, res, next) {
     });
 });
 userRouter.post('/', function (req, res, next) {
-    var user = new User_1.UserMongooseModel(req.body);
+    var user = new User_2.UserMongooseModel(req.body);
     user.createdBy = req.decoded.user;
     user.save()
         .then(function (userRes) {
@@ -62,7 +65,7 @@ userRouter.post('/', function (req, res, next) {
     });
 });
 userRouter.delete('/:id', function (req, res, next) {
-    User_1.UserMongooseModel.findByIdAndRemove(req.params.id, function (err, user) {
+    User_2.UserMongooseModel.findByIdAndRemove(req.params.id, function (err, user) {
         if (err) {
             next(err);
         }
@@ -72,7 +75,7 @@ userRouter.delete('/:id', function (req, res, next) {
     });
 });
 userRouter.put('/:id', function (req, res, next) {
-    User_1.UserMongooseModel.findByIdAndUpdate(req.params.id, {
+    User_2.UserMongooseModel.findByIdAndUpdate(req.params.id, {
         $set: req.body
     }, {
         new: true

@@ -1,4 +1,6 @@
-var MongooseBase = (function () {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var MongooseBase = /** @class */ (function () {
     function MongooseBase() {
         this._population = [];
     }
@@ -30,6 +32,6 @@ var MongooseBase = (function () {
     };
     MongooseBase.defaultPopulate = [{ path: 'createdBy' }];
     return MongooseBase;
-})();
+}());
 exports.MongooseBase = MongooseBase;
 //# sourceMappingURL=MongooseBase.js.map

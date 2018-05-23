@@ -1,6 +1,8 @@
-var bcrypt = require('bcryptjs');
-var Observable_1 = require('rxjs/Observable');
-var Encrypter = (function () {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var bcrypt = require("bcryptjs");
+var Observable_1 = require("rxjs/Observable");
+var Encrypter = /** @class */ (function () {
     function Encrypter() {
     }
     Encrypter.prototype.generateRandom = function (length) {
@@ -41,6 +43,6 @@ var Encrypter = (function () {
         return (random + new Buffer(email).toString('base64')).replace(/\//g, 'slash').replace(/\$/g, 'dollar').replace(/\./g, 'point').replace(/\=/g, 'eq');
     };
     return Encrypter;
-})();
+}());
 exports.Encrypter = Encrypter;
 //# sourceMappingURL=Encrypter.js.map

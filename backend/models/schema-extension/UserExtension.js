@@ -1,7 +1,9 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 //userSchema.statics.xyz = function
 //userSchema.methods.xyz = function
 //userSchema.virtual('fullName').get(function(){})
-var ExtendUserSchema = (function () {
+var ExtendUserSchema = /** @class */ (function () {
     function ExtendUserSchema() {
     }
     Object.defineProperty(ExtendUserSchema, "userSchema", {
@@ -15,6 +17,6 @@ var ExtendUserSchema = (function () {
         configurable: true
     });
     return ExtendUserSchema;
-})();
+}());
 exports.ExtendUserSchema = ExtendUserSchema;
 //# sourceMappingURL=UserExtension.js.map

@@ -1,4 +1,6 @@
-var BackendConfig = (function () {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var BackendConfig = /** @class */ (function () {
     function BackendConfig() {
     }
     BackendConfig.getConfiguration = function () {
@@ -38,6 +40,6 @@ var BackendConfig = (function () {
     };
     ;
     return BackendConfig;
-})();
+}());
 exports.BackendConfig = BackendConfig;
 //# sourceMappingURL=BackendConfig.js.map

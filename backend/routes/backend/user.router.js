@@ -1,5 +1,7 @@
-var express = require('express');
-var UserMongoose_1 = require('../../models/UserMongoose');
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var express = require("express");
+var UserMongoose_1 = require("../../models/UserMongoose");
 var UserMongooseClass_1 = require("../../models/mongoose-class/UserMongooseClass");
 var userRouter = express.Router();
 exports.userRouter = userRouter;
@@ -11,7 +13,7 @@ var userMongoose = new UserMongooseClass_1.UserMongoose();
 userRouter.post('/nameTaken', function (req, res, next) {
     var regEx = new RegExp('(^|\s)' + req.body.toCheck + '\\b', 'i');
     UserMongoose_1.UserMongooseModel.findOne({
-        username: regEx
+        email: regEx
     }).exec(function (err, user) {
         if (err) {
             next(err);

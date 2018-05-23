@@ -1,6 +1,8 @@
-var express = require('express');
-var TicketMongooseClass_1 = require('../../models/mongoose-class/TicketMongooseClass');
-var TicketMongoose_1 = require('../../models/TicketMongoose');
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var express = require("express");
+var TicketMongooseClass_1 = require("../../models/mongoose-class/TicketMongooseClass");
+var TicketMongoose_1 = require("../../models/TicketMongoose");
 var ticketRouter = express.Router();
 exports.ticketRouter = ticketRouter;
 var ticketRoutesPopulate = [{

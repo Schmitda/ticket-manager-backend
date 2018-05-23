@@ -1,4 +1,6 @@
-var FrontAndBackendUtility = (function () {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var FrontAndBackendUtility = /** @class */ (function () {
     function FrontAndBackendUtility() {
     }
     FrontAndBackendUtility.getUniqueByDotNotationReturnObject = function (value, dotNotationString, notFoundValue) {
@@ -125,6 +127,6 @@ var FrontAndBackendUtility = (function () {
         'vms/exe'
     ];
     return FrontAndBackendUtility;
-})();
+}());
 exports.FrontAndBackendUtility = FrontAndBackendUtility;
 //# sourceMappingURL=FrontAndBackendUtility.js.map

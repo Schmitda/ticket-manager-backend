@@ -1,6 +1,8 @@
-var express = require('express');
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var express = require("express");
 var Groups_1 = require("../../src/app/shared/types/Groups");
-var Authentication = (function () {
+var Authentication = /** @class */ (function () {
     function Authentication() {
     }
     Authentication.getInstance = function () {
@@ -154,6 +156,6 @@ var Authentication = (function () {
     };
     Authentication.apiRoutes = express.Router();
     return Authentication;
-})();
+}());
 exports.Authentication = Authentication;
 //# sourceMappingURL=Authentication.js.map

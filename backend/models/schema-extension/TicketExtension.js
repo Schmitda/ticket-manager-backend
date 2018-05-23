@@ -1,7 +1,9 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 //ticketSchema.statics.xyz = function
 //ticketSchema.methods.xyz = function
 //ticketSchema.virtual('fullName').get(function(){})
-var ExtendTicketSchema = (function () {
+var ExtendTicketSchema = /** @class */ (function () {
     function ExtendTicketSchema() {
     }
     Object.defineProperty(ExtendTicketSchema, "ticketSchema", {
@@ -15,6 +17,6 @@ var ExtendTicketSchema = (function () {
         configurable: true
     });
     return ExtendTicketSchema;
-})();
+}());
 exports.ExtendTicketSchema = ExtendTicketSchema;
 //# sourceMappingURL=TicketExtension.js.map

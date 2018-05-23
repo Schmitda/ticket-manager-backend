@@ -1,13 +1,15 @@
-var bodyParser = require('body-parser');
-var methodOverride = require('method-override');
-var cookieParser = require('cookie-parser');
-var frontendRouter = require('./routes/frontend/frontendRouter');
-var BackendConfig_1 = require('./config/BackendConfig');
-var ExtendResponse_1 = require('./config/ExtendResponse');
-var ExtendRequest_1 = require('./config/ExtendRequest');
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var bodyParser = require("body-parser");
+var methodOverride = require("method-override");
+var cookieParser = require("cookie-parser");
+var frontendRouter = require("./routes/frontend/frontendRouter");
+var BackendConfig_1 = require("./config/BackendConfig");
+var ExtendResponse_1 = require("./config/ExtendResponse");
+var ExtendRequest_1 = require("./config/ExtendRequest");
 var user_router_1 = require("./routes/backend/user.router");
 var ticket_router_1 = require("./routes/backend/ticket.router");
-var WebApi = (function () {
+var WebApi = /** @class */ (function () {
     function WebApi(app, port, securePort) {
         this.app = app;
         this.securePort = securePort;
@@ -74,6 +76,6 @@ var WebApi = (function () {
         this.app.listen(this.port);
     };
     return WebApi;
-})();
+}());
 exports.WebApi = WebApi;
 //# sourceMappingURL=WebApi.js.map

@@ -1,5 +1,6 @@
-var express = require('express');
-var BackendConfig_1 = require('../../config/BackendConfig');
+"use strict";
+var express = require("express");
+var BackendConfig_1 = require("../../config/BackendConfig");
 var fs = require('fs');
 var frontendRouter = express.Router();
 var config = BackendConfig_1.BackendConfig.getConfiguration();

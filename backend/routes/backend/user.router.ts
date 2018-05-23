@@ -13,7 +13,7 @@ const userMongoose = new UserMongoose();
 userRouter.post('/nameTaken', (req: ExpressRequest, res: ExpressResponse, next: Function) => {
     const regEx = new RegExp('(^|\s)' + req.body.toCheck + '\\b', 'i');
     UserMongooseModel.findOne({
-        username: regEx
+        email: regEx
     }).exec(function (err: any, user: UserDBDInterface) {
         if (err) {
             next(err);
